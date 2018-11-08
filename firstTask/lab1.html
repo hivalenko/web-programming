@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="page_style.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Test</title>
+  <meta charset="utf-8" />
+
+  <script type="text/javascript">
+
+    function checkFloat(num) {
+      var string = num.toString();
+
+      if (string.length > 17) {
+        return true;
+      }
+      return false;
+    }
+
+    function checkForm(form){
+
+      if(!isNaN(form.y.value) && !isNaN(Number(form.y.value)) && form.y.value != ""){
+        var num = Number(form.y.value);
+
+        if(num <= -5 || num >= 5){
+          document.getElementById("a").innerHTML="y shoud be less than 5 and greater than -5";
+          form.y.focus();
+          form.SubmitButton.disabled = true;
+          form.ySubmitter.checked = false;
+          return false;
+        }
+        if(checkFloat(form.y.value)){
+          document.getElementById("a").innerHTML="Please enter y value with more accurancy";
+          form.y.focus();
+          form.SubmitButton.disabled = true;
+          form.ySubmitter.checked = false;
+          return false;
+        }
+      }else{
+        document.getElementById("a").innerHTML="y shoud be numerical";
+        form.y.focus();
+        form.SubmitButton.disabled = true;
+        form.ySubmitter.checked = false;
+        return false;
+      }
+      document.getElementById("a").innerHTML="";
+      form.SubmitButton.disabled = false;
+      form.ySubmitter.checked = true;
+      return true;
+    }
+
+    function selectOnlyThis(id) {
+       for (var i = 1;i <= 9; i++)
+       {
+           document.getElementById(i).checked = false;
+       }
+       document.getElementById(id).checked = true;
+   }
+  </script>
+</head>
+
+<body>
+<table>
+	<tr>
+
+		<td id="header" style="background-color: #de8d47 !important" colspan="3">
+			<h1 >Коваленко Егор Иванович P3217 вариант: 28706</h1>
+		</td>
+	</tr>
+	<tr>
+		<td id="sidebar">
+      <div>
+        <img src="graphik.png" class="photocard">
+      </div>
+		</td>
+		<td id="content">
+
+			<form name="form" id="form" method="POST" action="lab1.php" onsubmit="return true">
+				<p>
+					<h3>
+					choose x
+					</h3>
+					<input type = "checkbox" id = "1" name = "x" onclick="selectOnlyThis(this.id)" value = "-4" checked="true"> -4
+          <input type = "checkbox" id = "2" name = "x" onclick="selectOnlyThis(this.id)" value = "-3"> -3
+					<input type = "checkbox" id = "3" name = "x" onclick="selectOnlyThis(this.id)" value = "-2"> -2
+					<input type = "checkbox" id = "4" name = "x" onclick="selectOnlyThis(this.id)" value = "-1"> -1
+					<input type = "checkbox" id = "5" name = "x" onclick="selectOnlyThis(this.id)" value = "0"> 0
+					<input type = "checkbox" id = "6" name = "x" onclick="selectOnlyThis(this.id)" value = "1"> 1
+					<input type = "checkbox" id = "7" name = "x" onclick="selectOnlyThis(this.id)" value = "2"> 2
+					<input type = "checkbox" id = "8" name = "x" onclick="selectOnlyThis(this.id)" value = "3"> 3
+					<input type = "checkbox" id = "9" name = "x" onclick="selectOnlyThis(this.id)" value = "4"> 4
+				</p>
+				<p>
+					<h3>
+						choose y
+					</h3>
+					<input class="A" type="text" name="y" required="true"> -5...5
+          <input type="button" value = "submit y" onclick="checkForm(this.form)">
+          <div class="errorMessage" id="a"></div>
+				</p>
+				<p>
+					<h3>
+						choose R
+						<select name="r" size="1">
+							<option> 1 </option>
+							<option> 1.5 </option>
+							<option> 2 </option>
+							<option> 2.5 </option>
+							<option> 3 </option>
+						</select>
+					</h3>
+
+				</p>
+				<input type="submit" name="SubmitButton" value="Send" disabled>
+
+
+			</form>
+		</td>
+    <td id="filler">
+    </td>
+	</tr>
+</table>
+</body>
+
+</html>

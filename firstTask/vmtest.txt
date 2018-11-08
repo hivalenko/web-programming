@@ -1,0 +1,22 @@
+var fs = require('fs');
+var http = require('http');
+
+var server = http.createServer(function( req, res){
+  console.log("URl of page: " + req.URl);
+
+  if (req.url === '/graphik.png') {
+    res.writeHead(200, {'Content-Type': 'image/png'});
+    fs.createReadStream(__dirname + '/graphik.png').pipe(res);
+  }else{
+    res.writeHead(200, {'Content-Type': 'text/css; charset=utf-8'});
+    fs.createReadStream(__dirname + '/page_style.css').pipe(res);
+
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+    fs.createReadStream(__dirname + '/test.html').pipe(res);
+  }
+//  fs.createReadStream(console).pipe(req);
+
+});
+
+server.listen(8001,  'localhost');
+console.log('Tracking port 8001');

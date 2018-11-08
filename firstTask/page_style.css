@@ -1,0 +1,48 @@
+<style>
+    #header {
+      background-color: #DE8D47 !important;
+      font-family:serif;
+      color: #201F1D;
+      font-size: large;
+
+    }
+    #sidebar {
+      background-color: #DCDCDC;
+      width: 700px;
+    }
+    #content{
+      background-color: #868685;
+      padding-left: 30px;
+    }
+    #filler{
+      background-color: #DCDCDC;
+      width: 700px;
+    }
+    table {
+      width: 100%;
+    }
+    h1:first-letter{
+      font-size: 200%;
+    }
+    body{
+      background-color: #201F1D;
+      color: #201F1D
+    }
+    .errorMessage{
+      color: #A92F41;
+      font-size: xx-large;
+    }
+    input.A:focus{
+      color: #A92F41;
+    }
+    td h1{
+          color: #151515;
+    }
+    @media(max-width: 960px) {
+      table, tr, td, tbody {
+        display: block;
+        width: 100%;
+      }
+
+    }
+  </style>
