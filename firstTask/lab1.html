@@ -22,14 +22,6 @@
 
       if(!isNaN(form.y.value) && !isNaN(Number(form.y.value)) && form.y.value != ""){
         var num = Number(form.y.value);
-
-        if(num <= -5 || num >= 5){
-          document.getElementById("a").innerHTML="y shoud be less than 5 and greater than -5";
-          form.y.focus();
-          form.SubmitButton.disabled = true;
-          form.ySubmitter.checked = false;
-          return false;
-        }
         if(checkFloat(form.y.value)){
           document.getElementById("a").innerHTML="Please enter y value with more accurancy";
           form.y.focus();
@@ -37,6 +29,18 @@
           form.ySubmitter.checked = false;
           return false;
         }
+        if(num <= -5 || num >= 5){
+          document.getElementById("a").innerHTML="y shoud be less than 5 and greater than -5";
+          form.y.focus();
+          form.SubmitButton.disabled = true;
+          form.ySubmitter.checked = false;
+          return false;
+        }
+        document.getElementById("a").innerHTML="";
+        form.SubmitButton.disabled = false;
+        form.ySubmitter.checked = true;
+        return true;
+
       }else{
         document.getElementById("a").innerHTML="y shoud be numerical";
         form.y.focus();
@@ -44,10 +48,7 @@
         form.ySubmitter.checked = false;
         return false;
       }
-      document.getElementById("a").innerHTML="";
-      form.SubmitButton.disabled = false;
-      form.ySubmitter.checked = true;
-      return true;
+
     }
 
     function selectOnlyThis(id) {

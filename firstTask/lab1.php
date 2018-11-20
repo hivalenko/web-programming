@@ -7,7 +7,7 @@
 
   function check($x, $y, $r){
     return(($y<=0 && $x >=0 && $y>=-$r/2 && $x <= $r) ||
-          ($x<=0 && $y >=0 && $x <= $y - $r/2) ||
+          ($x<=0 && $y >=0 && $x >= $y - $r/2) ||
           ($x<=0 && $y <=0 && $x*$x + $y*$y <= $r*$r));
   }
   if(!is_numeric($x) || !in_array($x, array(-4,-3,-2, -1, 0, 1, 2, 3, 4)) || !is_numeric($y) || $y >= 5 || $y <= -5 || !in_array($r, array(1, 1.5, 2, 2.5, 3))){
