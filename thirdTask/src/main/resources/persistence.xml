@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="pointUnit">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>Point</class>
+
+        <properties>
+            <!--<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:9999/lab3"/>
+            <property name="javax.persistence.jdbc.user" value="s242874"/>
+            <property name="javax.persistence.jdbc.password" value="88005553535"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>

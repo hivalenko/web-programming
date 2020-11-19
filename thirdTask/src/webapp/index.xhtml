@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title> Лабораторная работа №3 </title>
+        <!--<h:outputScript name="js/time.js" target="body"/>-->
+        <!--<h:outputStylesheet name="css/start.css"/>-->
+    </h:head>
+    <h:body>
+        <div class="header"> Коваленко Егор группа p3217 <strong>35237</strong></div>
+
+        <div id="clock">
+            <div class="time-component">
+                <span id='year'>2019</span>
+                <div class="small-text">Year</div>
+            </div>
+            <div class="time-component">
+                <span id="month">11</span>
+                <div class="small-text">Month</div>
+            </div>
+            <div class="time-component">
+                <span id="day">13</span>
+                <div class="small-text">Days</div>
+            </div>
+            <div class="time-component">
+                <span id="hours">23</span>
+                <div class="small-text">Hours</div>
+            </div>
+            <div class="time-component">
+                <span id="minutes">59</span>
+                <div class="small-text">Minutes</div>
+            </div>
+            <div class="time-component">
+                <span id="seconds">09</span>
+                <div class="small-text">Seconds</div>
+            </div>
+        </div>
+
+        <div class="main-elem" id="link"></div>
+        <div class="footerClass">
+            <div class="link-to-main">
+                <h:link action="main" outcome="index">
+                    Перейти на главную страницу
+                </h:link>
+            </div>
+        </div>
+    </h:body>
+</f:view>
+</html>

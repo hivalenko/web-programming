@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:view>
+    <h:head>
+        <title>Web-программирование, лабораторная работа #3</title>
+        <!--<h:outputStylesheet name="base.css" library="css"/>-->
+        <!--<h:outputStylesheet name="home.css" library="css"/>-->
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.ico']}"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="header">
+            <span id="author-name" class="header-left-element header-content">Коваленко Егор Иванович</span>
+            <span id="author-group" class="header-center-element header-content">P3211</span>
+            <span id="lab-variant" class="header-rigth-element header-content">Variant 35237</span>
+        </div>
+
+        <div id="workspace-container">
+            <div id="task-chart-container" class="workspace-item-container">
+                <h1>Область</h1>
+
+                <div class="horizontal-centering-container">
+                    <h:form>
+                        <h:inputHidden id="hiddenX" value="#{main.x}"/>
+                        <h:inputHidden id="hiddenY"  value="#{main.y}"/>
+                        <h:inputHidden id="hiddenR"  value="#{main.r}"/>
+                        <h:outputLabel style="display: none;" id="output" value="#{main.response}" />
+                        <h:commandButton style="display:none" type="button" id="ajax-button"
+                                         action="#{main.CheckHit}">
+                            <f:ajax execute="@form" render="output" onevent="onSuccess"/>
+                        </h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+
+            <div id="computation-form-container" class="workspace-item-container">
+                <h1>Параметры</h1>
+                <h:form id="computation-form">
+                    <div class="parameter-form-container">
+
+                        <h:commandLink id="image-link-id" action="x = 1;">
+                            <h:outputText value="Click here"></h:outputText>
+                        </h:commandLink>
+
+                        <div class="parameter-container">
+                            <label class="parameter-label">Y:</label>
+                            <h:inputText id="Y-param" styleClass="input-param" a:placeholder="(-3 ... 5)" maxlength="10" required="true" requiredMessage="Y должен быть указан" value="#{main.y}" converterMessage="Y должен быть числом">
+                                <f:validator validatorId="ParameterYValidator"/>
+                                <p:ajax event="blur" update="warning-container-Y"/>
+                            </h:inputText>
+                            <h:message for="Y-param" id="warning-container-Y" styleClass="warning-container"/>
+                        </div>
+                        <div class="parameter-container">
+                            <label class="parameter-label">R:</label>
+                            <span class="slider-value">Currant R value: </span>
+                            <h:outputText styleClass="slider-value" id="slider-output-R" value="#{main.getProcessedY()}"/>
+                            <h:inputHidden id="slider-input-R" value="#{main.r}"/>
+                            <p:slider styleClass="slider-bar" for="slider-input-R" display="slider-output-R" displayTemplate="{value}" minValue="1.0" maxValue="4.0" step="0.25">
+                                <p:ajax event="slideEnd" process="slider-input-R" oncomplete="reload();"/>
+                            </p:slider>
+                        </div>
+                        <div class="horizontal-centering-container button-container">
+                            <h:commandButton id="computation-form-button" styleClass="submit-button" actionListener="#{main.checkForm()}" value="Отправить"/>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+        <div id="result-container" class="horizontal-centering-container">
+            <h1>История результатов</h1>
+            <h:link styleClass="main-link" value="На главную" outcome="index"/>
+            <div id="result-table-container" class="table-container #{empty main.points ? 'hidden' : ''}">
+                <h:dataTable id="result-table" styleClass="result-table" value="#{main.points}" var="point">
+                    <h:column>
+                        <f:facet name="header">X</f:facet>
+                        #{point.x}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Y</f:facet>
+                        #{point.y}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">R</f:facet>
+                        #{point.r}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Hit</f:facet>
+                        #{point.hit ? 'Yes' : 'No'}
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+
+        <!--<h:outputScript library="js" name="utils.js" />-->
+        <!--<h:outputScript library="js" name="chart.js" />-->
+    </h:body>
+</f:view>
+
+</html>

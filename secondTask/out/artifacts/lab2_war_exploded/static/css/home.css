@@ -1,0 +1,116 @@
+#header {
+    background-color: #DE8D47 !important;
+    font-family:serif;
+    color: #201F1D;
+    font-size: large;
+
+}
+
+.sidebar {
+    background-color: #DCDCDC;
+    width: 30%;
+}
+
+.content{
+    background-color: #868685;
+}
+
+.filler{
+    background-color: #DCDCDC;
+    width: 30%;
+}
+
+#mobilesidebar {
+    background-color: #DCDCDC;
+}
+
+table {
+    width: 100%;
+}
+
+h1:first-letter{
+    font-size: 200%;
+}
+
+body{
+    background-color: #201F1D;
+    color: #201F1D
+}
+
+.errorMessage{
+    color: #A92F41;
+    font-size: xx-large;
+}
+
+input.A:focus{
+    color: #A92F41;
+}
+
+td h1{
+    color: #151515;
+}
+
+@media(max-width: 706px) {
+    .sidebar,.filler {display: none;}
+
+}
+
+@media(min-width:707px) {
+    #mobilesidebar{display: none;}
+}
+
+.coord_x>input:first-of-type {
+    margin-left: 0;
+}
+
+input[type="button"] {
+    font-size: 0.9em;
+    margin-left: 5%;
+    border-style: none;
+    border-radius: 3px;
+    background-color: #656564;
+    color: white;
+}
+
+
+[type="submit"] {
+    font-size: 0.9em;
+    width: 18%;
+    padding: 5px;
+    color: white;
+    margin-left: 80%;
+    margin-top: 10%;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #656564;
+}
+
+
+input[type="button"]:hover,
+[type="submit"]:hover {
+    background-color: #4C4C4B;
+}
+
+form{
+    margin-bottom: 0;
+}
+
+canvas{
+    display: block;
+    margin: auto auto;
+    border: 5px solid #656564;
+}
+
+.title{
+    margin-top: 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#history{
+    margin-bottom: 20px;
+    margin-top: 30px;
+    width: 90%;
+    border-width: 2px;
+}
